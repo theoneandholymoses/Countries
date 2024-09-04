@@ -1,0 +1,46 @@
+﻿ <Window x:Class="Countries.MainWindow"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:local="clr-namespace:Countries"
+       mc:Ignorable="d"
+       Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Search and Filter Controls -->
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <TextBox x:Name="SearchTextBox" Width="200" Margin="0,0,10,0" TextChanged="SearchTextBox_TextChanged" />
+            <ComboBox x:Name="RegionFilterComboBox" Width="150" SelectionChanged="RegionFilterComboBox_SelectionChanged">
+                <ComboBoxItem Content="All Regions" IsSelected="True"/>
+                <ComboBoxItem Content="Africa"/>
+                <ComboBoxItem Content="Americas"/>
+                <ComboBoxItem Content="Asia"/>
+                <ComboBoxItem Content="Europe"/>
+                <ComboBoxItem Content="Oceania"/>
+            </ComboBox>
+            <!--<Button Content="Sort by Name" Click="SortByNameButton_Click" Margin="10,0,0,0"/>-->
+        </StackPanel>
+
+        <!-- DataGrid to Display Countries -->
+        <DataGrid x:Name="CountriesDataGrid" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Region" Binding="{Binding Region}"/>
+                <DataGridTextColumn Header="Population" Binding="{Binding Population}"/>
+                <DataGridTextColumn Header="Capital" Binding="{Binding CapitalDisplay}"/>
+                <DataGridTemplateColumn Header="Flag">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding FlagImageUrl}" Width="50" Height="30" Stretch="Uniform"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
