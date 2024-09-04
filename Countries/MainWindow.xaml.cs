@@ -18,7 +18,7 @@ namespace Countries
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    /// 
+    /// erjgbjoergboreg
     public partial class MainWindow : Window
     {
         public ObservableCollection<Country> Countries { get; set; } = new ObservableCollection<Country>();
